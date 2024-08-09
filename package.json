@@ -1,7 +1,7 @@
 {
   "name": "adonis-logger-slack",
   "description": "Package logger to slack for AdonisJS",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "node": ">=20.6.0"
   },

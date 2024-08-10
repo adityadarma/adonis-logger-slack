@@ -1,46 +1,55 @@
-import { Exception } from '@adonisjs/core/exceptions'
 import config from '@adonisjs/core/services/config'
 import * as slack from '@slack/webhook'
 
 export class Slack extends slack.IncomingWebhook {
-  sendException(error: Exception) {
+  sendException(error: any) {
     const configSlack = config.get<any>('logger.loggers.slack')
 
     this.send({
       attachments: [
         {
-          color: this.color(configSlack.level),
+          color: this.setColor(configSlack.level),
           blocks: [
-            {
-              type: 'header',
-              text: {
-                type: 'plain_text',
-                text: `${error.message}`,
-              },
-            },
-            {
-              type: 'context',
-              elements: [
-                {
-                  type: 'plain_text',
-                  text: `${error.stack}`,
-                },
-              ],
-            },
+            this.setHeader(error.message),
+            this.setContent(error.stack),
           ],
         },
       ],
     })
   }
 
-  color(level: string) {
+  setColor(level: string) {
     switch (level) {
+      case 'info':
+        return 'good'
       case 'success':
         return 'good'
       case 'warning':
         return 'warning'
       case 'error':
         return 'danger'
+    }
+  }
+
+  setHeader(text: string) {
+    return {
+      type: 'header',
+      text: {
+        type: 'plain_text',
+        text: text,
+      },
+    }
+  }
+
+  setContent(text: string) {
+    return {
+      type: 'context',
+      elements: [
+        {
+          type: 'plain_text',
+          text: text,
+        },
+      ],
     }
   }
 }

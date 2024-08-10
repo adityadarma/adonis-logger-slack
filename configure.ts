@@ -1,16 +1,11 @@
 /*
-|--------------------------------------------------------------------------
-| Configure hook
-|--------------------------------------------------------------------------
-|
-| The configure hook is called when someone runs "node ace configure <package>"
-| command. You are free to perform any operations inside this function to
-| configure the package.
-|
-| To make things easier, you have access to the underlying "ConfigureCommand"
-| instance and you can use codemods to modify the source files.
-|
-*/
+ * @adityadarma/adonis-logger-slack
+ *
+ * (c) Romain Lanz
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 import ConfigureCommand from '@adonisjs/core/commands/configure'
 
@@ -29,7 +24,7 @@ export async function configure(command: ConfigureCommand) {
     variables: {
       LOG_SLACK_WEBHOOK_URL: 'Env.schema.string()',
     },
-    leadingComment: 'Variables for configuring adonis-slack package',
+    leadingComment: 'Variables for configuring adonis-logger-slack package',
   })
 
   /**
@@ -37,7 +32,7 @@ export async function configure(command: ConfigureCommand) {
    */
   await codemods.registerMiddleware('router', [
     {
-      path: 'adonis-logger-slack/middleware',
+      path: '@adityadarma/adonis-logger-slack/middleware',
       position: 'before',
     },
   ])

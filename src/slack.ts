@@ -9,10 +9,7 @@ export class Slack extends slack.IncomingWebhook {
       attachments: [
         {
           color: this.setColor(configSlack.level),
-          blocks: [
-            this.setHeader(error.message),
-            this.setContent(error.stack),
-          ],
+          blocks: [this.setHeader(error.message), this.setContent(error.stack)],
         },
       ],
     })

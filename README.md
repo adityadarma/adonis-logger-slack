@@ -36,16 +36,16 @@ Logger provides multiple integrations to enhance the data captured by driver. Yo
 // config/logger.ts
 
 slack: {
-      enabled: true,
-      name: env.get('APP_NAME'),
-      level: env.get('LOG_LEVEL'),
-      icon: 'boom', 
-      url: env.get('LOG_SLACK_WEBHOOK_URL'),
-      transport: {
-        targets: targets()
-          .pushIf(!app.inProduction, targets.pretty())
-          .pushIf(app.inProduction, targets.file({ destination: 1 }))
-          .toArray(),
-      },
-    },
+  enabled: true,
+  name: env.get('APP_NAME'),
+  level: env.get('LOG_LEVEL'),
+  icon: 'boom', 
+  url: env.get('LOG_SLACK_WEBHOOK_URL'),
+  transport: {
+    targets: targets()
+      .pushIf(!app.inProduction, targets.pretty())
+      .pushIf(app.inProduction, targets.file({ destination: 1 }))
+      .toArray(),
+  },
+},
 ```

@@ -1,4 +1,9 @@
 # Adonis Slack for Logger
+
+<br>
+
+[![gh-workflow-image]][gh-workflow-url] [![npm-image]][npm-url] [![npm-downloads]][npm-downloads] ![][typescript-image] [![license-image]][license-url]
+
 Adonis Slack Logger is a feature that allows developers to store application logger to slack. This feature provides a structured and organized approach to managing application logs, making it easier to query and analyze them.
 
 ## Installation
@@ -49,3 +54,13 @@ slack: {
   },
 },
 ```
+
+[gh-workflow-image]: https://img.shields.io/github/actions/workflow/status/adityadarma/adonis-logger-slack/release.yml?style=for-the-badge
+[gh-workflow-url]: https://github.com/adityadarma/adonis-logger-slack/actions/workflows/release.yml 'Github action'
+[npm-image]: https://img.shields.io/npm/v/@adityadarma/adonis-logger-slack/latest.svg?style=for-the-badge&logo=npm
+[npm-url]: https://www.npmjs.com/package/@adityadarma/adonis-logger-slack/v/latest 'npm'
+[typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
+[license-url]: LICENSE.md
+[license-image]: https://img.shields.io/github/license/adityadarma/adonis-logger-slack?style=for-the-badge
+[npm-downloads]: https://img.shields.io/npm/dm/@adityadarma/adonis-logger-slack.svg?style=for-the-badge
+[count-downloads]: https://npmcharts.com/compare/@adityadarma/adonis-logger-slack?minimal=true

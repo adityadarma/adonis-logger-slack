@@ -52,7 +52,7 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: Setup GitHub credentials for pushing tags
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/adityadarma/adonis-datatables.git
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/adityadarma/adonis-logger-slack.git
       - name: Create GitHub tag
         run: |
           git config user.name "github-actions[bot]"

@@ -15,7 +15,7 @@ export class Slack extends slack.IncomingWebhook {
     })
   }
 
-  setColor(level: string) {
+  private setColor(level: string) {
     switch (level) {
       case 'info':
         return 'good'
@@ -28,7 +28,7 @@ export class Slack extends slack.IncomingWebhook {
     }
   }
 
-  setHeader(text: string) {
+  private setHeader(text: string) {
     return {
       type: 'header',
       text: {
@@ -38,7 +38,7 @@ export class Slack extends slack.IncomingWebhook {
     }
   }
 
-  setContent(text: string) {
+  private setContent(text: string) {
     return {
       type: 'context',
       elements: [

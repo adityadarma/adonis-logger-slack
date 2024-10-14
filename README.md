@@ -36,7 +36,6 @@ export default class HttpExceptionHandler extends ExceptionHandler {
 
 Logger provides multiple integrations to enhance the data captured by driver. You can add integrations by changing the `config` inside the configuration `config/logger.ts`.
 
-
 ```ts
 // config/logger.ts
 
@@ -44,16 +43,57 @@ slack: {
   enabled: true,
   name: env.get('APP_NAME'),
   level: env.get('LOG_LEVEL'),
-  icon: 'boom', 
+  icon: 'boom',
   url: env.get('LOG_SLACK_WEBHOOK_URL'),
+  redact: {
+    paths: ['password', '*.password']
+  }
   transport: {
     targets: targets()
-      .pushIf(!app.inProduction, targets.pretty())
-      .pushIf(app.inProduction, targets.file({ destination: 1 }))
-      .toArray(),
-  },
+    .pushIf(!app.inProduction, targets.pretty())
+    .pushIf(app.inProduction, targets.file({ destination: 1 }))
+    // Optional to send log anyware
+    .push({
+      target: '@youngkiu/pino-slack-webhook',
+      level: 'info',
+      options: {
+        webhookUrl: env.get('LOG_SLACK_WEBHOOK_URL'),
+        channel: '#error_notifications',
+        username: 'webhookbot',
+        icon_emoji: ':ghost:'
+      }
+    })
+    .toArray()
+  }
 },
 ```
+
+*Note: please install `@youngkiu/pino-slack-webhook` if you want send slack anyware
+
+### Create log anyware
+
+#### via service
+```ts
+import logger from '@adonisjs/core/services/logger'
+
+router.get('/logger', async () => {
+  logger.info('dfdgdg')
+  ......
+})
+```
+
+#### via HttpContext
+
+```ts
+router.get('/logger', async ({logger}: HttpContext) => {
+  logger.info('dfdgdg')
+  .....
+})
+```
+
+## License
+
+Adonis Datatables is open-sourced software licensed under the [MIT license](LICENSE.md).
 
 [gh-workflow-image]: https://img.shields.io/github/actions/workflow/status/adityadarma/adonis-logger-slack/release.yml?style=for-the-badge
 [gh-workflow-url]: https://github.com/adityadarma/adonis-logger-slack/actions/workflows/release.yml 'Github action'

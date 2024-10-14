@@ -36,4 +36,11 @@ export async function configure(command: ConfigureCommand) {
       position: 'before',
     },
   ])
+
+  /**
+   * Add provider to rc file
+   */
+  await codemods.updateRcFile((rcFile) => {
+    rcFile.addProvider('@adityadarma/adonis-logger-slack/slack_provider')
+  })
 }

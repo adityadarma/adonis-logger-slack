@@ -24,7 +24,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
 
   async report(error: unknown, ctx: HttpContext) {
     if (this.shouldReport(error as any)) {
-      ctx.slack.sendException(error)
+      ctx?.slack?.sendException(error)
     }
 
     return super.report(error, ctx)

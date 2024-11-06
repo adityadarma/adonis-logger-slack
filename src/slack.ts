@@ -3,12 +3,12 @@ import * as slack from '@slack/webhook'
 
 export class Slack extends slack.IncomingWebhook {
   sendException(error: any) {
-    const configSlack = config.get<any>('logger.loggers.slack')
+    const slack = config.get<any>('logger.loggers.slack')
 
     this.send({
       attachments: [
         {
-          color: this.setColor(configSlack.level),
+          color: this.setColor(slack.level),
           blocks: [this.setHeader(error.message), this.setContent(error.stack)],
         },
       ],

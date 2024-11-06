@@ -1,7 +1,5 @@
 # Adonis Slack for Logger
 
-<br>
-
 [![gh-workflow-image]][gh-workflow-url] [![npm-image]][npm-url] [![npm-downloads]][npm-downloads] ![][typescript-image] [![license-image]][license-url]
 
 Adonis Slack Logger is a feature that allows developers to store application logger to slack. This feature provides a structured and organized approach to managing application logs, making it easier to query and analyze them.
@@ -47,7 +45,7 @@ slack: {
   url: env.get('LOG_SLACK_WEBHOOK_URL'),
   redact: {
     paths: ['password', '*.password']
-  }
+  },
   transport: {
     targets: targets()
     .pushIf(!app.inProduction, targets.pretty())

@@ -4,7 +4,7 @@ import { Slack } from '../src/slack.js'
 let slack: Slack
 
 /**
- * Returns data storage
+ * Returns slack container
  */
 await app.booted(async () => {
   slack = await app.container.make('slack')

@@ -34,7 +34,7 @@
     "prebuild": "npm run lint && npm run clean",
     "build": "npm run clean && tsc",
     "postbuild": "npm run copy:templates",
-    "release": "np",
+    "release": "release-it",
     "version": "npm run build",
     "prepublishOnly": "npm run build"
   },
@@ -45,6 +45,11 @@
   ],
   "author": "Aditya Darma <adhit.boys1@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/adityadarma/adonis-logger-slack#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityadarma/adonis-logger-slack.git"
+  },
   "devDependencies": {
     "@adonisjs/assembler": "^7.7.0",
     "@adonisjs/core": "^6.12.0",
@@ -53,6 +58,7 @@
     "@adonisjs/tsconfig": "^1.3.0",
     "@japa/assert": "^3.0.0",
     "@japa/runner": "^3.1.4",
+    "@release-it/conventional-changelog": "^9.0.2",
     "@swc/core": "^1.6.3",
     "@types/node": "^20.14.5",
     "c8": "^10.1.2",
@@ -61,6 +67,7 @@
     "eslint": "^8.57.0",
     "np": "^10.0.6",
     "prettier": "^3.3.2",
+    "release-it": "^17.10.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
@@ -74,11 +81,43 @@
     "access": "public",
     "tag": "latest"
   },
-  "np": {
-    "message": "chore(release): %s",
-    "tag": "latest",
-    "branch": "main",
-    "anyBranch": false
+  "release-it": {
+    "git": {
+      "requireCleanWorkingDir": true,
+      "requireUpstream": true,
+      "commitMessage": "chore(release): ${version}",
+      "tagAnnotation": "v${version}",
+      "push": true,
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": false
+    },
+    "npm": {
+      "publish": true,
+      "skipChecks": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": {
+          "name": "angular"
+        },
+        "releaseRules": [
+          {
+            "type": "breaking",
+            "release": "major"
+          },
+          {
+            "type": "feat",
+            "release": "minor"
+          },
+          {
+            "type": "fix",
+            "release": "patch"
+          }
+        ]
+      }
+    }
   },
   "c8": {
     "reporter": [
@@ -92,9 +131,5 @@
   "eslintConfig": {
     "extends": "@adonisjs/eslint-config/package"
   },
-  "prettier": "@adonisjs/prettier-config",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adityadarma/adonis-logger-slack"
-  }
+  "prettier": "@adonisjs/prettier-config"
 }

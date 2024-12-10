@@ -39,8 +39,8 @@ Logger provides multiple integrations to enhance the data captured by driver. Yo
 
 slack: {
   enabled: true,
-  name: env.get('APP_NAME'),
-  level: env.get('LOG_LEVEL'),
+  name: env.get('APP_NAME', 'slack'),
+  level: env.get('LOG_LEVEL', 'error'),
   icon: 'boom',
   url: env.get('LOG_SLACK_WEBHOOK_URL'),
   redact: {
@@ -71,6 +71,7 @@ slack: {
 ### Create log anyware
 
 #### via service
+
 ```ts
 import logger from '@adonisjs/core/services/logger'
 

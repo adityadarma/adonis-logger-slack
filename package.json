@@ -68,7 +68,7 @@
     "np": "^10.0.6",
     "prettier": "^3.3.3",
     "release-it": "^17.10.0",
-    "ts-node-maintained": "^10.9.4",
+    "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {

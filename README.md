@@ -48,25 +48,23 @@ slack: {
   },
   transport: {
     targets: targets()
-    .pushIf(!app.inProduction, targets.pretty())
-    .pushIf(app.inProduction, targets.file({ destination: 1 }))
-    // Optional to send log anyware
-    .push({
-      target: '@youngkiu/pino-slack-webhook',
-      level: 'info',
-      options: {
-        webhookUrl: env.get('LOG_SLACK_WEBHOOK_URL'),
-        channel: '#error_notifications',
-        username: 'webhookbot',
-        icon_emoji: ':ghost:'
-      }
-    })
-    .toArray()
+      .pushIf(!app.inProduction, targets.pretty())
+      .pushIf(app.inProduction, targets.file({ destination: 1 }))
+      // Optional to send log anyware
+      .push({
+        target: '@youngkiu/pino-slack-webhook',
+        level: 'error',
+        options: {
+          webhookUrl: env.get('LOG_SLACK_WEBHOOK_URL'),
+          channel: '#error_notifications',
+          username: 'webhookbot',
+          icon_emoji: ':ghost:'
+        }
+      })
+      .toArray()
   }
 },
 ```
-
-*Note: please install `@youngkiu/pino-slack-webhook` if you want send slack anyware
 
 ### Create log anyware
 

@@ -5,7 +5,6 @@
   "engines": {
     "node": ">=20.6.0"
   },
-  "main": "build/index.js",
   "type": "module",
   "files": [
     "build/src",
@@ -38,18 +37,6 @@
     "version": "npm run build",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [
-    "slack",
-    "logger",
-    "adonis"
-  ],
-  "author": "Aditya Darma <adhit.boys1@gmail.com>",
-  "license": "MIT",
-  "homepage": "https://github.com/adityadarma/adonis-logger-slack#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/adityadarma/adonis-logger-slack.git"
-  },
   "devDependencies": {
     "@adonisjs/assembler": "^7.8.2",
     "@adonisjs/core": "^6.15.0",
@@ -78,9 +65,22 @@
   "peerDependencies": {
     "@adonisjs/core": "^6.15.0"
   },
+  "keywords": [
+    "slack",
+    "logger",
+    "adonis"
+  ],
+  "author": "Aditya Darma <adhit.boys1@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/adityadarma/adonis-logger-slack#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityadarma/adonis-logger-slack.git"
+  },
   "publishConfig": {
     "access": "public",
-    "tag": "latest"
+    "tag": "latest",
+    "provenance": true
   },
   "release-it": {
     "git": {
@@ -92,7 +92,7 @@
       "tagName": "v${version}"
     },
     "github": {
-      "release": false
+      "release": true
     },
     "npm": {
       "publish": true,
@@ -102,21 +102,7 @@
       "@release-it/conventional-changelog": {
         "preset": {
           "name": "angular"
-        },
-        "releaseRules": [
-          {
-            "type": "breaking",
-            "release": "major"
-          },
-          {
-            "type": "feat",
-            "release": "minor"
-          },
-          {
-            "type": "fix",
-            "release": "patch"
-          }
-        ]
+        }
       }
     }
   },
@@ -132,5 +118,10 @@
   "eslintConfig": {
     "extends": "@adonisjs/eslint-config/package"
   },
-  "prettier": "@adonisjs/prettier-config"
+  "prettier": "@adonisjs/prettier-config",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
 }

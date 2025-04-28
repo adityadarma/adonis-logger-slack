@@ -59,8 +59,7 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@slack/webhook": "^7.0.5",
-    "@youngkiu/pino-slack-webhook": "^0.1.2"
+    "@slack/webhook": "^7.0.5"
   },
   "peerDependencies": {
     "@adonisjs/core": "^6.15.0"

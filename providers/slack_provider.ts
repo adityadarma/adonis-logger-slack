@@ -8,7 +8,7 @@ export default class SlackProvider {
    * Register bindings to the container
    */
   register() {
-    this.app.container.bind('slack', async () => {
+    this.app.container.singleton('slack', async () => {
       const slack = this.app.config.get<any>('logger.loggers.slack')
 
       return new Slack(slack.url)

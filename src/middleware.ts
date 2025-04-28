@@ -1,15 +1,11 @@
 import { HttpContext } from '@adonisjs/core/http'
 import type { NextFn } from '@adonisjs/core/types/http'
-import config from '@adonisjs/core/services/config'
+import { slack } from '../services/main.js'
 import { Slack } from './slack.js'
 
 export default class SlackMiddleware {
   async handle(ctx: HttpContext, next: NextFn) {
-    const slack = config.get<any>('logger.loggers.slack')
-    ctx.slack = new Slack(slack.url, {
-      username: slack.name,
-      icon_emoji: slack.icon,
-    })
+    ctx.slack = slack
     ctx.containerResolver.bindValue(Slack, ctx.slack)
 
     return await next()

@@ -6,29 +6,18 @@ export class Slack extends slack.IncomingWebhook {
     const configSlack = config.get<any>('logger.loggers.slack')
 
     this.send({
+      username: configSlack.name,
+      icon_emoji: 'boom',
       attachments: [
         {
           mrkdwn_in: ['text'],
-          color: this.setColor(configSlack.level),
+          color: 'danger',
           pretext: error.message,
-          author_icon: configSlack.icon,
+          author_icon: 'boom',
           title: 'Message',
           text: error.stack,
         },
       ],
     })
-  }
-
-  private setColor(level: string) {
-    switch (level) {
-      case 'success':
-        return 'good'
-      case 'warning':
-        return 'warning'
-      case 'error':
-        return 'danger'
-      default:
-        return 'gray'
-    }
   }
 }

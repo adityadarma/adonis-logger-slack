@@ -39,9 +39,8 @@ Logger provides multiple integrations to enhance the data captured by driver. Yo
 
 slack: {
   enabled: true,
-  name: env.get('APP_NAME', 'slack'),
+  name: env.get('APP_NAME', 'AdonisJS'),
   level: env.get('LOG_LEVEL', 'error'),
-  icon: 'boom',
   url: env.get('LOG_SLACK_WEBHOOK_URL'),
   redact: {
     paths: ['password', '*.password']
@@ -65,6 +64,8 @@ slack: {
   }
 },
 ```
+
+\*Note: please install `@youngkiu/pino-slack-webhook` if you want send slack anyware
 
 ### Create log anyware
 
@@ -90,7 +91,7 @@ router.get('/logger', async ({logger}: HttpContext) => {
 
 ## License
 
-Adonis Datatables is open-sourced software licensed under the [MIT license](LICENSE.md).
+This package is open-sourced software licensed under the [MIT license](LICENSE.md).
 
 [gh-workflow-image]: https://img.shields.io/github/actions/workflow/status/adityadarma/adonis-logger-slack/release.yml?style=for-the-badge
 [gh-workflow-url]: https://github.com/adityadarma/adonis-logger-slack/actions/workflows/release.yml 'Github action'

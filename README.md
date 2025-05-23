@@ -41,7 +41,7 @@ slack: {
   enabled: true,
   name: env.get('APP_NAME', 'AdonisJS'),
   level: env.get('LOG_LEVEL', 'error'),
-  url: env.get('LOG_SLACK_WEBHOOK_URL'),
+  url: env.get('LOG_SLACK_WEBHOOK_URL', ''),
   redact: {
     paths: ['password', '*.password']
   },
@@ -54,8 +54,8 @@ slack: {
         target: '@youngkiu/pino-slack-webhook',
         level: 'error',
         options: {
-          webhookUrl: env.get('LOG_SLACK_WEBHOOK_URL'),
-          channel: '#error_notifications',
+          webhookUrl: env.get('LOG_SLACK_WEBHOOK_URL', ''),
+          channel: env.get('LOG_SLACK_WEBHOOK_CHANNEL', '#error_notifications'),
           username: 'webhookbot',
           icon_emoji: ':ghost:'
         }

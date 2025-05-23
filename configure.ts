@@ -15,14 +15,16 @@ export async function configure(command: ConfigureCommand) {
   /**
    * Define environment variables
    */
-  await codemods.defineEnvVariables({ LOG_SLACK_WEBHOOK_URL: '<your_slack_url>' })
+  await codemods.defineEnvVariables({
+    LOG_SLACK_WEBHOOK_URL: '<your_slack_url>',
+  })
 
   /**
    * Define environment variables validations
    */
   await codemods.defineEnvValidations({
     variables: {
-      LOG_SLACK_WEBHOOK_URL: 'Env.schema.string()',
+      LOG_SLACK_WEBHOOK_URL: 'Env.schema.string.optional()',
     },
     leadingComment: 'Variables for configuring adonis-logger-slack package',
   })

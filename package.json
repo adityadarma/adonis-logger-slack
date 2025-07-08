@@ -3,7 +3,7 @@
   "description": "Package logger to slack for AdonisJS",
   "version": "1.2.2",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=20.6.0"
   },
   "type": "module",
   "files": [
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@adonisjs/assembler": "^7.8.2",
     "@adonisjs/core": "^6.15.0",
-    "@adonisjs/eslint-config": "^2.0.0-beta.7",
+    "@adonisjs/eslint-config": "^2.0.0",
     "@adonisjs/prettier-config": "^1.4.0",
     "@adonisjs/tsconfig": "^1.4.0",
     "@japa/assert": "^3.0.0",
@@ -55,7 +55,7 @@
     "np": "^10.0.6",
     "prettier": "^3.5.3",
     "release-it": "^17.11.0",
-    "ts-node-maintained": "^10.9.4",
+    "ts-node-maintained": "^10.9.5",
     "typescript": "^5.7.2"
   },
   "dependencies": {
